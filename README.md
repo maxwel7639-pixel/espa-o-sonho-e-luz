@@ -1,5 +1,7 @@
 # Espaço Terapêutico Sonho e Luz
 
+No ar: <https://espa-o-sonho-e-luz.vercel.app/>
+
 Site institucional da **Mara Nunes** — Constelação Familiar, Terapia Sistêmica e terapias
 integrativas. Canoas/RS, atendimento presencial e online.
 
@@ -46,6 +48,7 @@ frases da Mara nos posts.
 
 - **Telefone**: o site usa `5551984540487` (o que aparece no Google Maps e nas artes mais
   recentes). Alguns posts antigos trazem `(51) 98973-5015` — confirmar qual é o canal ativo.
-- **Domínio**: as tags `og:url`, `canonical` e `og:image` apontam para
-  `https://espacosonhoeluz.com.br/`. Trocar se o domínio final for outro — sem isso a prévia
-  do link no WhatsApp/Instagram não carrega a imagem.
+- **Domínio**: no ar em <https://espa-o-sonho-e-luz.vercel.app/>. As tags `og:url`,
+  `canonical`, `og:image` e o JSON-LD já apontam para esse endereço. Se um dia entrar um
+  domínio próprio, é só trocar essas quatro URLs — sem isso a prévia do link no
+  WhatsApp/Instagram não carrega a imagem.
