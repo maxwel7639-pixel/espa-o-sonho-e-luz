@@ -681,6 +681,18 @@ p:last-child{margin-bottom:0}
   transform:scale(1.02);
   transition:transform 600ms cubic-bezier(.2,.6,.2,1);
 }
+/* WebP para quem suporta — os <img> resolvem isso via <picture>, mas fundo de
+   CSS precisa do image-set. Fica no @supports porque, dentro de uma custom
+   property, um image-set não reconhecido zeraria a declaração em vez de cair
+   na regra anterior. */
+@supports (background-image:image-set(url("i.webp") type("image/webp"))){
+  .cartao::before{
+    background-image:image-set(
+      var(--foto-webp) type("image/webp"),
+      var(--foto) type("image/jpeg")
+    );
+  }
+}
 .cartao::after{
   content:"";
   position:absolute;inset:0;z-index:-1;
@@ -762,12 +774,15 @@ p:last-child{margin-bottom:0}
   gap:clamp(30px,5vw,62px);
   align-items:start;
 }
+/* A foto de origem já vem com o retrato dentro de um círculo e cantos escuros
+   colados. Fechar em círculo no CSS descarta esses cantos e ainda dá o
+   enquadramento clássico de retrato. */
 .mara__retrato{margin:0;position:relative}
 .mara__retrato::before{
   content:"";position:absolute;
-  inset:18px -18px -18px 18px;
+  inset:16px -16px -16px 16px;
   border:1px solid var(--nude);
-  border-radius:var(--r-g);
+  border-radius:50%;
   z-index:0;
 }
 .mara__retrato img{
@@ -775,7 +790,7 @@ p:last-child{margin-bottom:0}
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  border-radius:var(--r-g);
+  border-radius:50%;
   box-shadow:var(--sombra-m);
 }
 .mara__texto{color:var(--tinta-suave)}

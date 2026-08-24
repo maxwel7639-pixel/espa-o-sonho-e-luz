@@ -37,6 +37,28 @@ como uma matéria — número do capítulo, olho, capitular, pull-quote, ficha t
 encontro, trilha de passos, bento de terapias com foto real de fundo, mural de depoimentos e
 mosaico do espaço.
 
+## Imagens
+
+As fontes originais são pequenas — fotos de ~525x350 e recortes da grade do Instagram de
+~200px de largura. Ampliar não cria detalhe, então a qualidade vem do processo, não do
+tamanho. `ferramentas/build_imagens.py` regenera todos os assets a partir do material bruto:
+
+- amplia **uma vez só**, com LANCZOS, até no máximo o que cada fonte aguenta (em vez de
+  ampliar aqui e deixar o browser ampliar de novo por cima);
+- suaviza o ruído de bloco **antes** de ampliar quando a fonte é recorte de screenshot já
+  comprimido, senão o LANCZOS amplia o artefato junto com o detalhe;
+- devolve acutância com máscara de nitidez **depois** de ampliar, na medida da ampliação;
+- grava em **4:4:4** (sem subamostragem de cor), porque as fotos têm parede verde, sofá
+  vermelho e dourado — bordas coloridas que o 4:2:0 borra;
+- gera **WebP ao lado do JPEG**. O HTML usa `<picture>` e os fundos de card usam
+  `image-set()`, então quem suporta WebP baixa ~670 KB em vez de ~2,1 MB.
+
+```bash
+python ferramentas/build_imagens.py assets/img
+```
+
+O script espera o zip original descompactado no diretório de trabalho.
+
 ## Conteúdo
 
 Todo o conteúdo vem de material real: fotos do espaço, prints das avaliações do Google
